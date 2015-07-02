@@ -5,9 +5,6 @@ class ChecksumAccumulator {
   def checksum(): Int = ~(sum & 0xFF) + 1
 }
 
-val acc = new ChecksumAccumulator
-val csa = new ChecksumAccumulator
-
 import scala.collection.mutable.Map
 object ChecksumAccumulator {
   private val cache = Map[String, Int]()
@@ -23,5 +20,3 @@ object ChecksumAccumulator {
     cs
   }
 }
-
-ChecksumAccumulator.calculate("Every value is an object.")
