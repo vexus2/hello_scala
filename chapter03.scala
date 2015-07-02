@@ -32,3 +32,7 @@ println(oneTwoThree2)
 val oneTwoThree3 = 1 :: 2 :: 3 :: Nil
 println(oneTwoThree3)
 oneTwoThree3.foreach(s => println(s))
+
+val pair = (99, "Luftballoons")
+println(pair._1)
+println(pair._2)
