@@ -56,7 +56,50 @@ treasureMap += (3 -> "Dig.")
 println(treasureMap(2))
 
 val romanNumeral = Map(
-1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V"
+  1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V"
 )
 
 println(romanNumeral(4))
+
+
+// 命令形の記述
+def printArgs(args: Array[String]): Unit = {
+  var i = 0
+  while (i < args.length) {
+    println(args(i))
+    i += 1
+  }
+}
+
+// varを取り除く
+def printArgs2(args: Array[String]): Unit = {
+  for (arg <- args) println(arg)
+}
+
+def printArgs3(args: Array[String]): Unit = {
+  args.foreach(println)
+}
+
+// 副作用もvarもない関数
+def formatArgs(args: Array[String]) = args.mkString("\n")
+println(formatArgs(args))
+
+import scala.io.Source
+
+def widthOfLength(s:String) = s.length.toString.length
+
+if (args.length > 0) {
+  val lines = Source.fromFile(args(0)).getLines().toList
+  val longestLines = lines.reduceLeft(
+    (a, b) => if (a.length > b.length) a else b
+  )
+  val maxWidth = widthOfLength(longestLines)
+  for(line <- lines) {
+    val numSpaces = maxWidth - widthOfLength(line)
+    val padding = " " * numSpaces
+    println(padding + line.length + " | " + line)
+  }
+}else
+  Console.err.println("Please enter filename")
+
+
