@@ -7,7 +7,7 @@ abstract class Element {
 }
 
 final class ArrayElement extends Element {
-  override def demo(): Unit = {
+  def demo(): Unit = {
     println("ArrayElement's implementation invoked")
   }
 }
